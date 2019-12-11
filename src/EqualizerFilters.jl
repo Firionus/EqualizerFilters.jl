@@ -7,7 +7,7 @@ using DSP
 include("equalizerAPOstrings.jl")
 include("DSPjlBiquads.jl")
 
-export LP, HP, BP, NO, AP, PK, LS, HS, Biquad, eqAPOstring
+export LP, HP, BP, NO, AP, PK, LS, HS, Biquad, eqAPOstring, SecondOrderSections
 
 #default sampling rate
 fs = 48e3
