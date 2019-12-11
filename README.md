@@ -3,8 +3,6 @@
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://Firionus.github.io/EqualizerFilters.jl/dev)
 [![Build Status](https://travis-ci.com/Firionus/EqualizerFilters.jl.svg?branch=master)](https://travis-ci.com/Firionus/EqualizerFilters.jl)
 
-===Travis Badge===
-
 This package provides:
 
 1. [DSP.jl](https://github.com/JuliaDSP/DSP.jl)-Biquads of typical audio equalizer filters, compatible to [Equalizer APO](https://sourceforge.net/projects/equalizerapo/). This allows the development of filters in Julia, followed by deployment on a Windows PC.
