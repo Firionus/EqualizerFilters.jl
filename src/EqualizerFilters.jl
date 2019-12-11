@@ -1,6 +1,7 @@
 module EqualizerFilters
 
 import DSP.Biquad
+using DSP
 
 export LP, HP, BP, NO, AP, PK, LS, HS, Biquad, eqAPOstring
 
@@ -202,6 +203,21 @@ end
 function eqAPOstring(x::Array{T} where {T <: Tuple{Symbol, Vararg}})
     biquadStrings = [eqAPOstring(x[i]) for i in 1:length(x)]
     string(biquadStrings...)
+end
+
+function eqAPOstring(x::FilterCoefficients)
+    xsos = SecondOrderSections(x)
+    biquads = xsos.biquads
+    n = length(biquads)
+    gain = xsos.g^(1/n)
+    output = string()
+    for i in eachindex(biquads)
+        currentBiquad = biquads[i]
+        output *= string("Filter: ON IIR Order 2 Coefficients ",
+        currentBiquad.b0, " ", currentBiquad.b1, " ", currentBiquad.b2, " 1 ",
+        currentBiquad.a1, " ", currentBiquad.a2, "\n")
+    end
+    output
 end
 
 end # module

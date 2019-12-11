@@ -116,3 +116,9 @@ end
     (:LS, fTest, dbGainTest, Qtest), (:HS, fTest, dbGainTest, Qtest)]
     @test_nowarn Biquad(testArray)
 end
+
+@testset "eqAPOstring(x::FilterCoefficients)" begin
+    @test_nowarn eqAPOstring(Biquad(1,2,3,4,5))
+    @test_nowarn eqAPOstring(LP(fTest, Qtest))
+    @test_nowarn eqAPOstring(PK(fTest, dbGainTest, Qtest)*AP(fTest, Qtest))
+end
