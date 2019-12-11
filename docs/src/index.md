@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-]add ADDLINK
+]add https://github.com/Firionus/EqualizerFilters.jl
 ```
 
 Start using the package with
