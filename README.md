@@ -23,10 +23,3 @@ to [(Orfanidis, JAES 1997)](http://www.aes.org/e-lib/browse.cfm?elib=7854) where
 the Nyquist-gain is adjusted to more closely approximate analog EQs. In contrast
 to the implementation in DSP.jl, it also provides
 a Bessel highpass with maximally flat group delay behaviour at higher orders.
-
-## ToDo
-
-- Add measured responses from Equalizer APO as tests to ensure match between EQ APO and our implementation
-- implement Slope and Bandwidth parameters
-- implement other implementations (different prewarpings or Nyquist Gains) and consolidate with [LakeBiquads.jl](https://github.com/Firionus/LakeBiquads.jl)
-- [Hybrid Peak/Shelf EQ](http://www.aes.org/e-lib/browse.cfm?elib=12429), if possible because of patents
