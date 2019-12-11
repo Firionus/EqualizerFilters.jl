@@ -1,7 +1,7 @@
 """
     eqAPOstring(filterType::Symbol, f, dbGain, Q)
 
-Return a three-parameter filter as a string in Equalizer APO
+Convert a three-parameter filter to a string in Equalizer APO
 configuration file format.
 
 As `filterType` use:
@@ -24,7 +24,7 @@ end
 """
     eqAPOstring(filterType::Symbol, f, Q)
 
-Return a two-parameter filter as a
+Convert a two-parameter filter to a
 string in Equalizer APO configuration file format.
 
 As `filterType` use:
@@ -47,7 +47,7 @@ end
 """
     eqAPOstring(filterType::Symbol, param)
 
-Return a gain or delay filter as a string in Equalizer APO configuration file format.
+Covert a gain or delay filter to a string in Equalizer APO configuration file format.
 
 As `filterType` use:
 - `:G` for gain filter with gain in dB
@@ -66,30 +66,22 @@ function eqAPOstring(filterType::Symbol, param)
     end
 end
 
-"""
-    eqAPOstring(x::Tuple{Symbol, Vararg})
-
-Return filter given in a tuple format as a string in
-Equalizer APO configuration file format.
-
-The tuple shall constructed according to:
-
-`([:G, :D, :Ds, :LP, :HP, :BP, :NO, :AP, :PK, :LS, :HS], f, dbGain, Q)`
-
-Depending on the filter please omit the unneeded arguments. See other methods of
-[`eqAPOstring`](@ref) for details.
-"""
 function eqAPOstring(x::Tuple{Symbol, Vararg})
     eqAPOstring(x...)
 end
 
 """
-    eqAPOstring(x::Tuple{Symbol, Vararg})
+    eqAPOstring(x::Array{T} where {T <: Tuple{Symbol, Vararg}})
 
 Convert an array of filters in a tuple format to a string in
 Equalizer APO configuration file format.
 
-See other methods of [`eqAPOstring`](@ref) for details.
+The tuples in the array shall constructed according to:
+
+`([:G|:D|:Ds|:LP|:HP|:BP|:NO|:AP|:PK|:LS|:HS], f, dbGain, Q)`
+
+Depending on the filter please omit the unneeded arguments. See other methods of
+[`eqAPOstring`](@ref) for details.
 """
 function eqAPOstring(x::Array{T} where {T <: Tuple{Symbol, Vararg}})
     biquadStrings = [eqAPOstring(x[i]) for i in 1:length(x)]
@@ -97,13 +89,13 @@ function eqAPOstring(x::Array{T} where {T <: Tuple{Symbol, Vararg}})
 end
 
 """
-    eqAPOString(x::FilterCoefficients)
+    eqAPOstring(x::FilterCoefficients)
 
 Convert the given DSP.jl Filter to a
 string in Equalizer APO configuration file format.
 
 The conversion uses second order sections and spreads the gain evenly among all
-biquads. 
+biquads.
 """
 function eqAPOstring(x::FilterCoefficients)
     xsos = SecondOrderSections(x)

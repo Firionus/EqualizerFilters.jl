@@ -84,6 +84,29 @@ function Biquad(x::Tuple{Symbol, Vararg})
 end
 
 """
+    SecondOrderSections(x::Tuple{Symbol, Vararg})
+
+Return a filter specified in a tuple format as SecondOrderSections, where the first argument
+is a symbol and defines the filter type:
+`([:LP, :HP, :BP, :NO, :AP, :PK, :LS, :HS, :G], f, dbGain, Q)`
+
+For non-gain filter types [:LP, :HP, :BP, :NO, :AP] the argument `dbGain` is to
+be omitted. For the simple gain-filter `:G` the arguments `f` and `Q` shall be
+omitted.
+
+`f` is in Hz and `dbGain` in dB. The quality factor `Q` is dimensionless.
+
+The filter types refert to a lowpass, highpass, bandpass, notch, allpass, peaking,
+low shelf, high shelf and gain filter respectively.
+
+The sampling rate defaults to 48 kHz or can be
+set with [`EqualizerFilters.sampling_rate`](@ref).
+"""
+function SecondOrderSections(x::Tuple{Symbol, Vararg})
+    SecondOrderSections(Biquad(x...))
+end
+
+"""
     SecondOrderSections(x::Array{T} where {T <: Tuple{Symbol, Vararg}})
 
 Return SecondOrderSections that represent the filters defined in the array
