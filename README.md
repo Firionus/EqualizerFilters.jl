@@ -1,10 +1,11 @@
 # EqualizerFilters.jl
 
-Typical filters used in audio equalization for Julia
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://Firionus.github.io/EqualizerFilters.jl/stable)
+[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://Firionus.github.io/EqualizerFilters.jl/dev)
 
-=== Badges ===
+===Travis Badge===
 
-Specifically, this package provides:
+This package provides:
 
 1. [DSP.jl](https://github.com/JuliaDSP/DSP.jl)-Biquads of typical audio equalizer filters, compatible to [Equalizer APO](https://sourceforge.net/projects/equalizerapo/). This allows the development of filters in Julia, followed by deployment on a Windows PC.
 2. An Array of Tuples representing an EQ filter chain which can be converted to both SecondOrderSections from [DSP.jl](https://github.com/JuliaDSP/DSP.jl) and to the [configuration file format of Equalizer APO](https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/).
