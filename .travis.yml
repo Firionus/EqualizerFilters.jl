@@ -5,7 +5,7 @@ julia:
   - 1
 jobs:
   include:
-    - stage "Tests"
+    - stage: "Tests"
       script:
         - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
         - julia --project -e 'using Pkg; Pkg.build(); Pkg.test(; coverage=true)';
