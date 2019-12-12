@@ -69,9 +69,9 @@ function biquad_approx(x::Biquad, y::Biquad)
     x.a2 ≈ y.a2
 end
 
-@testset "Biquad(Array{Tuple-Format})" begin
+@testset "SecondOrderSections(Array{Tuple-Format})" begin
     @test sos_approx(
-    Biquad([(:LP, fTest, Qtest)]),
+    SecondOrderSections([(:LP, fTest, Qtest)]),
     LP(fTest, Qtest)|>SecondOrderSections
     )
 
@@ -79,7 +79,7 @@ end
     (:NO, fTest, Qtest), (:AP, fTest, Qtest), (:PK, fTest, dbGainTest, Qtest),
     (:LS, fTest, dbGainTest, Qtest), (:HS, fTest, dbGainTest, Qtest)]
     @test sos_approx(
-    Biquad(testArray),
+    SecondOrderSections(testArray),
     LP(fTest, Qtest)*HP(fTest, Qtest)*BP(fTest, Qtest)*
     NO(fTest, Qtest)*AP(fTest, Qtest)*PK(fTest, dbGainTest, Qtest)*
     LS(fTest, dbGainTest, Qtest)*HS(fTest, dbGainTest, Qtest)
@@ -114,7 +114,7 @@ end
     testArray = [(:LP, fTest, Qtest), (:HP, fTest, Qtest), (:BP, fTest, Qtest),
     (:NO, fTest, Qtest), (:AP, fTest, Qtest), (:PK, fTest, dbGainTest, Qtest),
     (:LS, fTest, dbGainTest, Qtest), (:HS, fTest, dbGainTest, Qtest)]
-    @test_nowarn Biquad(testArray)
+    @test_nowarn eqAPOstring(testArray)
 end
 
 @testset "eqAPOstring(x::FilterCoefficients)" begin
